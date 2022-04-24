@@ -3,7 +3,6 @@ import os
 import csv
 import numpy as np
 from numpy.linalg import norm
-import perceptron
 import math
 from data import func
 
@@ -65,8 +64,8 @@ def test_perceptron_noise(X, Y, w, bound,first,second):
     i = 0
     acc_error = 0
     acc_total_sum = 0
-    total =  0
-    val = 0
+    accum =  0
+    c = 0.1
  
     for row in X:
         
@@ -90,10 +89,10 @@ def test_perceptron_noise(X, Y, w, bound,first,second):
                     
             total_val = 0
 
-        if (accum > int((first**0.5)+1)):
+        if (accum > c*int((first**0.5))):
             pred = 1
 
-        elif (accum < -int((first**(0.5)+1))):
+        elif (accum < -c*int((first*(0.5)))):
             pred = -1
 
         else:
